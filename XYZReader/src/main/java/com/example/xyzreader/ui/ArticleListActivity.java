@@ -22,6 +22,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
+import android.transition.Transition;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
@@ -155,26 +156,19 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                        int finalRadius = (int)Math.hypot(view.getWidth()/2, view.getHeight()/2);
-//                        Animator anim = ViewAnimationUtils.createCircularReveal(view, (int) view.getWidth()/2, (int) view.getHeight()/2, 0, finalRadius);
-//                        anim.start();
-//                    }
-
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
-
-//                    startActivity(intent,
-//                            ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this, view,
-//                                    view.getTransitionName()).toBundle());
 
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
                         startActivity(intent);
                     } else {
-                        ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                                ArticleListActivity.this, view, vh.thumbnailView.getTransitionName());
-
-                        ActivityCompat.startActivity(ArticleListActivity.this, intent, activityOptions.toBundle());
+                        Bundle bundle = ActivityOptionsCompat
+                                .makeSceneTransitionAnimation(
+                                        ArticleListActivity.this,
+                                        vh.thumbnailView,
+                                        vh.thumbnailView.getTransitionName())
+                                .toBundle();
+                        startActivity(intent, bundle);
                     }
                 }
             });

@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Design.TransparentStatus">
+    <style name="AppTheme.TransparentStatus">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
-    <style name="Theme.Design.Main" parent="@style/Theme.Design">
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowExitTransition">@transition/grid_exit</item>
-        <item name="android:windowReenterTransition">@transition/grid_reenter</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
-    <style name="Theme.Design.Details" parent="@style/Theme.Design">
+    <style name="AppTheme.Main" parent="@style/AppTheme">
+        <item name="android:windowExitTransition">@transition/grid_exit</item>
+        <item name="android:windowReenterTransition">@transition/grid_reenter</item>
         <item name="android:windowSharedElementEnterTransition">@transition/shared_photo</item>
+        <item name="android:windowSharedElementExitTransition">@transition/shared_photo</item>
+    </style>
+
+    <style name="AppTheme.Details" parent="@style/AppTheme">
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/shared_photo</item>
+        <item name="android:windowSharedElementExitTransition">@transition/shared_photo</item>
     </style>
 
 </resources>
