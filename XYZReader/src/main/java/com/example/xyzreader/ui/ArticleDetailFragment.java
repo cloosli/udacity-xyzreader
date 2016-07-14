@@ -56,6 +56,7 @@ public class ArticleDetailFragment extends Fragment implements
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
     private Typeface mRosario;
+    private String mTitle;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -136,12 +137,16 @@ public class ArticleDetailFragment extends Fragment implements
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
+        mTitle = null;
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (mTitle == null) {
+                    return;
+                }
                 startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
                         .setType("text/plain")
-                        .setText("Some sample text")
+                        .setText(mTitle)
                         .getIntent(), getString(R.string.action_share)));
             }
         });
@@ -195,7 +200,8 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-            titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
+            mTitle = mCursor.getString(ArticleLoader.Query.TITLE);
+            titleView.setText(mTitle);
             bylineView.setText(Html.fromHtml(
                     DateUtils.getRelativeTimeSpanString(
                             mCursor.getLong(ArticleLoader.Query.PUBLISHED_DATE),
