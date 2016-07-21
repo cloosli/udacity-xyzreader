@@ -1,6 +1,5 @@
 package com.example.xyzreader.ui;
 
-import android.animation.Animator;
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,23 +7,17 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
-import android.transition.Transition;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -156,19 +149,33 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
+//                    Intent intent = new Intent(Intent.ACTION_VIEW,
+//                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
+//
+//                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+//                        startActivity(intent);
+//                    } else {
+//                        Bundle bundle = ActivityOptionsCompat
+//                                .makeSceneTransitionAnimation(
+//                                        ArticleListActivity.this,
+//                                        vh.thumbnailView,
+//                                        vh.thumbnailView.getTransitionName())
+//                                .toBundle();
+//                        startActivity(intent, bundle);
+//                    }
+                    Intent intent = new Intent(Intent.ACTION_VIEW, ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        TextView title = (TextView)  view.findViewById(R.id.article_title);
+//                        String tName= getString(R.string.head_prefix) + String.valueOf(getItemId(vh.getAdapterPosition()));
+//                        title.setTransitionName(tName);
+                        String tName = getString(R.string.transition_photo) + Long.toString(getItemId(vh.getAdapterPosition()));
+                        vh.thumbnailView.setTransitionName(tName);
+                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(ArticleListActivity.this, vh.thumbnailView, tName);
 
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                        ActivityCompat.startActivity(ArticleListActivity.this, intent, options.toBundle());
+                    }
+                    else {
                         startActivity(intent);
-                    } else {
-                        Bundle bundle = ActivityOptionsCompat
-                                .makeSceneTransitionAnimation(
-                                        ArticleListActivity.this,
-                                        vh.thumbnailView,
-                                        vh.thumbnailView.getTransitionName())
-                                .toBundle();
-                        startActivity(intent, bundle);
                     }
                 }
             });

@@ -9,5 +9,8 @@
 
     <string name="up">Up</string>
 
-    <string name="transition_photo">transition_photo</string>
+    <!-- Transition related -->
+    <string name="transition_photo" translatable="false">transition_photo</string>
+    <string name="head_prefix" translatable="false">HEAD</string>
+    <string name="sub_prefix" translatable="false">SUB</string>
 </resources>
