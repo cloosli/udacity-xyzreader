@@ -166,8 +166,6 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            TextView title = (TextView)  mRootView.findViewById(R.id.article_title);
-//            title.setTransitionName(getString(R.string.head_prefix) + String.valueOf(mItemId));
             ImageView photo = (ImageView) mRootView.findViewById(R.id.photo);
             photo.setTransitionName(getString(R.string.transition_photo) + String.valueOf(mItemId));
         }
