@@ -149,29 +149,11 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    Intent intent = new Intent(Intent.ACTION_VIEW,
-//                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
-//
-//                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-//                        startActivity(intent);
-//                    } else {
-//                        Bundle bundle = ActivityOptionsCompat
-//                                .makeSceneTransitionAnimation(
-//                                        ArticleListActivity.this,
-//                                        vh.thumbnailView,
-//                                        vh.thumbnailView.getTransitionName())
-//                                .toBundle();
-//                        startActivity(intent, bundle);
-//                    }
                     Intent intent = new Intent(Intent.ACTION_VIEW, ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                        TextView title = (TextView)  view.findViewById(R.id.article_title);
-//                        String tName= getString(R.string.head_prefix) + String.valueOf(getItemId(vh.getAdapterPosition()));
-//                        title.setTransitionName(tName);
                         String tName = getString(R.string.transition_photo) + Long.toString(getItemId(vh.getAdapterPosition()));
                         vh.thumbnailView.setTransitionName(tName);
                         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(ArticleListActivity.this, vh.thumbnailView, tName);
-
                         ActivityCompat.startActivity(ArticleListActivity.this, intent, options.toBundle());
                     }
                     else {
