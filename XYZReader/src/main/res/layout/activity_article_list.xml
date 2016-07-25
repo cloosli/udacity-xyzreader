@@ -7,31 +7,32 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="164dp"
-        android:background="?colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="128dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="6dp">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_app_bar"
             android:layout_width="match_parent"
-            app:titleEnabled="false"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin">
+                app:layout_collapseMode="pin"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             </android.support.v7.widget.Toolbar>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center"
+                android:layout_gravity="bottom|left"
+                android:layout_marginLeft="@dimen/activity_vertical_image_in_toolbar"
                 android:contentDescription="@string/app_name"
-                android:layout_marginBottom="@dimen/toolbar_imageview_margin_bottom"
                 android:scaleType="centerCrop"
                 android:src="@drawable/logo" />
 
