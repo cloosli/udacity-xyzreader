@@ -42,33 +42,50 @@
                 android:maxWidth="@dimen/detail_card_max_width"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/meta_bar"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
-                    android:background="#333"
-                    android:orientation="vertical"
-                    android:paddingBottom="@dimen/detail_metabar_vert_padding"
-                    android:paddingLeft="@dimen/detail_inner_horiz_margin"
-                    android:paddingRight="@dimen/detail_inner_horiz_margin"
-                    android:paddingTop="@dimen/detail_metabar_vert_padding">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/article_title"
-                        style="@style/ArticleDetailTitle"
+                    <LinearLayout
+                        android:id="@+id/meta_bar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="Misteries of the Universe Solved" />
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
+                        android:background="#333"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/detail_metabar_vert_padding"
+                        android:paddingLeft="@dimen/detail_inner_horiz_margin"
+                        android:paddingRight="@dimen/detail_inner_horiz_margin"
+                        android:paddingTop="@dimen/detail_metabar_vert_padding">
 
-                    <TextView
-                        android:id="@+id/article_byline"
-                        style="@style/ArticleDetailByLine"
+                        <TextView
+                            android:id="@+id/article_title"
+                            style="@style/ArticleDetailTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="Misteries of the Universe Solved" />
+
+                        <TextView
+                            android:id="@+id/article_byline"
+                            style="@style/ArticleDetailByLine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="20. Juni 2013 by Carl Sagan" />
+
+                    </LinearLayout>
+
+                    <android.support.design.widget.FloatingActionButton
+
+                        android:id="@+id/share_fab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="20. Juni 2013 by Carl Sagan" />
-                </LinearLayout>
+                        android:layout_gravity="right|bottom"
+                        android:layout_marginBottom="@dimen/fab_margin_bottom"
+                        android:layout_marginRight="@dimen/fab_margin"
+                        android:contentDescription="@string/action_share"
+                        android:src="@drawable/ic_share" />
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/article_body"
@@ -81,20 +98,9 @@
                     tools:text="article body" />
 
             </com.example.xyzreader.ui.MaxWidthLinearLayout>
+
+
         </FrameLayout>
     </com.example.xyzreader.ui.ObservableScrollView>
-
-    <ImageButton
-        android:id="@+id/share_fab"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:background="@drawable/add_fab_background"
-        android:contentDescription="@string/action_share"
-        android:elevation="@dimen/fab_elevation"
-        android:src="@drawable/ic_share"
-        android:stateListAnimator="@anim/fab_state_list_anim" />
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>

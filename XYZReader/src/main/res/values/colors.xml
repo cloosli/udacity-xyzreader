@@ -27,4 +27,5 @@
     <color name="icons">#212121</color>
     <color name="divider">#B6B6B6</color>
     <color name="grey_ripple">#8ddd</color>
+    <color name="white">#fff</color>
 </resources>
