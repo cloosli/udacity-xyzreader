@@ -13,4 +13,5 @@
     <string name="transition_photo" translatable="false">transition_photo</string>
     <string name="head_prefix" translatable="false">HEAD</string>
     <string name="sub_prefix" translatable="false">SUB</string>
+    <string name="article_cover">Article cover</string>
 </resources>

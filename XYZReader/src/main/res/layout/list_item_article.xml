@@ -8,15 +8,13 @@
     android:layout_marginTop="4dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="@drawable/grey_ripple"
-    android:stateListAnimator="@animator/raise">
+    android:foreground="?selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--suppress AndroidLintContentDescription -->
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"

@@ -10,8 +10,11 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
@@ -33,7 +36,7 @@ import com.example.xyzreader.data.ArticleLoader;
  * tablets) or a {@link ArticleDetailActivity} on handsets.
  */
 public class ArticleDetailFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        LoaderManager.LoaderCallbacks<Cursor>, AppBarLayout.OnOffsetChangedListener {
     public static final String ARG_ITEM_ID = "item_id";
     private static final String TAG = "ArticleDetailFragment";
     private static final float PARALLAX_FACTOR = 1.25f;
@@ -43,11 +46,14 @@ public class ArticleDetailFragment extends Fragment implements
     private View mRootView;
     private int mMutedColor = 0xFF333333;
 
+    private Toolbar mToolbar;
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private ImageView mPhotoView;
     private boolean mIsCard = false;
-//    private int mStatusBarFullOpacityBottom;
     private Typeface mRosario;
     private String mTitle;
+    private int mMaxScrollSize;
+    private boolean mIsTitleShown;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -93,8 +99,6 @@ public class ArticleDetailFragment extends Fragment implements
         }
 
         mIsCard = getResources().getBoolean(R.bool.detail_is_card);
-//        mStatusBarFullOpacityBottom = getResources().getDimensionPixelSize(
-//                R.dimen.detail_card_top_margin);
         setHasOptionsMenu(true);
     }
 
@@ -117,6 +121,20 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
+
+
+        mCollapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_app_bar);
+
+        AppBarLayout appbarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar);
+        appbarLayout.addOnOffsetChangedListener(this);
+
+        mToolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
         mTitle = null;
@@ -158,14 +176,6 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
             mTitle = mCursor.getString(ArticleLoader.Query.TITLE);
-
-//            this.getActivity().getActionBar().setDisplayShowTitleEnabled(true);
-//            this.getActivity().getActionBar().setTitle(mTitle);
-//            Toolbar toolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
-//            if (toolbar!= null) {
-//                toolbar.setTitle(mTitle);
-//            }
-//            getActivity().setTitle(mTitle);
 
             titleView.setText(mTitle);
             bylineView.setText(Html.fromHtml(
@@ -232,5 +242,21 @@ public class ArticleDetailFragment extends Fragment implements
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         mCursor = null;
         bindViews();
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if (mMaxScrollSize == 0)
+            mMaxScrollSize = appBarLayout.getTotalScrollRange();
+        if (mMaxScrollSize + verticalOffset == 0) {
+            mCollapsingToolbarLayout.setTitle(mTitle);
+            mIsTitleShown = true;
+            mToolbar.setBackgroundColor(mMutedColor);
+        } else if(mIsTitleShown) {
+            mCollapsingToolbarLayout.setTitle("");
+            mIsTitleShown = false;
+            mToolbar.setBackgroundColor(getResources().getColor(R.color.trans));
+        }
+
     }
 }

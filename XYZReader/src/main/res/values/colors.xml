@@ -28,4 +28,5 @@
     <color name="divider">#B6B6B6</color>
     <color name="grey_ripple">#8ddd</color>
     <color name="white">#fff</color>
+    <color name="trans">#00000000</color>
 </resources>
