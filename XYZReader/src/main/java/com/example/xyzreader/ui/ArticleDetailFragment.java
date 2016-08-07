@@ -127,9 +127,9 @@ public class ArticleDetailFragment extends Fragment implements
         appbarLayout.addOnOffsetChangedListener(this);
 
         mToolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
-//        mToolbar.setTitle("");
-//        getActivityCast().setSupportActionBar(mToolbar);
-//        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar.setTitle("");
+        getActivityCast().setSupportActionBar(mToolbar);
+        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
