@@ -121,14 +121,15 @@ public class ArticleDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
-
-
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) mRootView.findViewById(R.id.collapsing_app_bar);
 
         AppBarLayout appbarLayout = (AppBarLayout) mRootView.findViewById(R.id.app_bar);
         appbarLayout.addOnOffsetChangedListener(this);
 
         mToolbar = (Toolbar) mRootView.findViewById(R.id.toolbar);
+//        mToolbar.setTitle("");
+//        getActivityCast().setSupportActionBar(mToolbar);
+//        getActivityCast().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -246,17 +247,17 @@ public class ArticleDetailFragment extends Fragment implements
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-        if (mMaxScrollSize == 0)
+        if (mMaxScrollSize == 0) {
             mMaxScrollSize = appBarLayout.getTotalScrollRange();
+        }
         if (mMaxScrollSize + verticalOffset == 0) {
             mCollapsingToolbarLayout.setTitle(mTitle);
             mIsTitleShown = true;
             mToolbar.setBackgroundColor(mMutedColor);
-        } else if(mIsTitleShown) {
+        } else if (mIsTitleShown) {
             mCollapsingToolbarLayout.setTitle("");
             mIsTitleShown = false;
             mToolbar.setBackgroundColor(getResources().getColor(R.color.trans));
         }
-
     }
 }
