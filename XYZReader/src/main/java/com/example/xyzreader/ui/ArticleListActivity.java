@@ -158,8 +158,7 @@ public class ArticleListActivity extends AppCompatActivity implements
                         vh.thumbnailView.setTransitionName(tName);
                         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(ArticleListActivity.this, vh.thumbnailView, tName);
                         ActivityCompat.startActivity(ArticleListActivity.this, intent, options.toBundle());
-                    }
-                    else {
+                    } else {
                         startActivity(intent);
                     }
                 }
