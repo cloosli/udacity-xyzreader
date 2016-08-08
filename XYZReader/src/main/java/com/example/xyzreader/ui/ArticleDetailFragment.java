@@ -254,10 +254,18 @@ public class ArticleDetailFragment extends Fragment implements
             mCollapsingToolbarLayout.setTitle(mTitle);
             mIsTitleShown = true;
             mToolbar.setBackgroundColor(mMutedColor);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                Window window = getActivityCast().getWindow();
+//                window.setStatusBarColor(mMutedColor);
+//            }
         } else if (mIsTitleShown) {
             mCollapsingToolbarLayout.setTitle("");
             mIsTitleShown = false;
             mToolbar.setBackgroundColor(getResources().getColor(R.color.trans));
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                Window window = getActivityCast().getWindow();
+//                window.setStatusBarColor(getResources().getColor(R.color.trans));
+//            }
         }
     }
 }
