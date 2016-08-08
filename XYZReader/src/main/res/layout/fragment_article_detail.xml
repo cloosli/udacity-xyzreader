@@ -102,10 +102,10 @@
         android:id="@+id/share_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_share_black_24dp"
-        android:tint="@color/white"
         android:contentDescription="@string/action_share"
-        android:layout_gravity="bottom|end" />
+        android:tint="@color/white"
+        app:srcCompat="@drawable/ic_share_black_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>
