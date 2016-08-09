@@ -29,3 +29,11 @@ Through this project, you will:
 
 - Kagure says:
 “The color scheme is really sad and I shouldn't feel sad.”
+
+
+### Screenshots after redesign
+- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-135328.png)
+- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-135419.png)
+- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-140026.png)
+- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-140043.png)
+
