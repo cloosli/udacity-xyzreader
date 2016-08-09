@@ -16,8 +16,6 @@
 -->
 
 <resources>
-    <color name="photo_placeholder">#ccc</color>
-
     <color name="primary">#FF9800</color>
     <color name="primary_dark">#F57C00</color>
     <color name="primary_light">#FFE0B2</color>
@@ -29,4 +27,6 @@
     <color name="grey_ripple">#8ddd</color>
     <color name="white">#fff</color>
     <color name="trans">#00000000</color>
+    <color name="grey800">#424242</color>
+    <color name="photo_placeholder">#ccc</color>
 </resources>
