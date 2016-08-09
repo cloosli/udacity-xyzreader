@@ -32,8 +32,8 @@ Through this project, you will:
 
 
 ### Screenshots after redesign
-- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-135328.png)
-- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-135419.png)
-- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-140026.png)
-- ![alt tag](https://raw.githubusercontent.com/cloosli/udacity-xyzreader/master/art/Screenshot_20160809-140043.png)
+![alt tag](art/Screenshot_20160809-135328.png)
+![alt tag](art/Screenshot_20160809-135419.png)
+![alt tag](art/Screenshot_20160809-140026.png)
+![alt tag](art/Screenshot_20160809-140043.png)
 
