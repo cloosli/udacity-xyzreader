@@ -4,6 +4,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_vertical_image_in_toolbar">8dp</dimen>
+    <dimen name="listitem_vertical_padding_top">4dp</dimen>
+    <dimen name="listitem_horizontal_padding">16dp</dimen>
     <!-- detail -->
     <dimen name="detail_title_text_size">32sp</dimen>
     <dimen name="detail_body_text_size">22sp</dimen>

@@ -27,10 +27,10 @@
             style="@style/ArticleTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="4dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
+            android:paddingBottom="@dimen/listitem_vertical_padding_top"
+            android:paddingLeft="@dimen/listitem_horizontal_padding"
+            android:paddingRight="@dimen/listitem_horizontal_padding"
+            android:paddingTop="@dimen/listitem_horizontal_padding"
             tools:text="An Empire State of Mind" />
 
         <TextView
@@ -38,9 +38,9 @@
             style="@style/ArticleSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:paddingBottom="@dimen/listitem_horizontal_padding"
+            android:paddingLeft="@dimen/listitem_horizontal_padding"
+            android:paddingRight="@dimen/listitem_horizontal_padding"
             tools:text="19. Juni 2013 by Ernest Hemingway" />
     </LinearLayout>
 
